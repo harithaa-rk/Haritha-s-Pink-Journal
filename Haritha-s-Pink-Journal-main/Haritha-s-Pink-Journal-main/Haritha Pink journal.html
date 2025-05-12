@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pink Journal</title>
+    <style>
+        /* Page Load Animation */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+        
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            background: linear-gradient(90deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            text-align: center;
+        }
+
+        .content-wrapper {
+            display: flex;
+            width: 90%;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Profile Section */
+        .profile-container {
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: slideInLeft 1s ease-in-out forwards;
+        }
+
+        /* Profile Slide-in Effect */
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .profile-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        /* LinkedIn Button Animation */
+        .profile-button a {
+            text-decoration: none;
+            color: white;
+            background: #ff1493;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Journal Entry Section */
+        .journal-container {
+            width: 60%;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(50px);
+            opacity: 0;
+            animation: slideInRight 1s ease-in-out forwards;
+        }
+
+        /* Slide-in Effect for Journal Section */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Journal Entry Animation */
+        .entry {
+            background: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .btn {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        /* Video Section */
+        .video-container {
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out 1s forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">💖 Haritha's Pink Journal 💖</div>
+
+    <div class="content-wrapper">
+        <!-- Profile Section (Left) -->
+        <div class="profile-container">
+            <img src="hi.jpeg" alt="Haritha's Image">
+            <h2>Haritha R</h2>
+            <p><strong>CSE | NEC'27</strong></p>
+            <div class="details">
+                <p><strong>Skills:</strong> C, C++, Java, Python, Kotlin</p>
+                <p><strong>Interests:</strong> Web Dev, Blockchain, AI, Cybersecurity</p>
+                <p><strong>Education:</strong> BE - Computer Engineering</p>
+                <p><strong>Projects:</strong> Voice Detector, Library System, Farmers App</p>
+            </div>
+            <div class="profile-button">
+                <a href="https://www.linkedin.com/in/haritha-r-82a392289" target="_blank">My Profile</a>
+            </div>
+        </div>
+
+        <!-- Journal Entry Section (Right) -->
+        <div class="journal-container">
+            <h2>Share Your Thoughts With Me Guys!!! ✨</h2>
+            <input type="text" id="title" class="input-field" placeholder="Title">
+            <textarea id="content" class="input-field" rows="4" placeholder="Write your thoughts..."></textarea>
+            <input type="file" id="imageUpload" accept="image/*">
+            <button class="btn" onclick="addEntry()">Add Entry</button>
+            <div class="journal-entries" id="entriesContainer"></div>
+        </div>
+    </div>
+
+    <!-- YouTube Video Section (Bottom) -->
+    <div class="video-container">
+        <h2>🎥 Watch My Latest Video! 🎥</h2>
+        <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/KqVnAc4dj-0" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- JavaScript for Adding Journal Entries -->
+    <script>
+        function addEntry() {
+            let title = document.getElementById("title").value;
+            let content = document.getElementById("content").value;
+            let entryHTML = `<div class='entry'>
+                <h3>${title}</h3>
+                <p>${content}</p>
+            </div>`;
+            document.getElementById("entriesContainer").innerHTML += entryHTML;
+            document.getElementById("title").value = "";
+            document.getElementById("content").value = "";
+        }
+    </script>
+</body>
+</html>
